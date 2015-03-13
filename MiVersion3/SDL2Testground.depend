@@ -785,3 +785,57 @@
 1425604070 source:c:\users\rafael\desktop\rasr-24\universidad\lab programacion iii\lp3-tarea4-master\miversion2\sho.cpp
 	"Sho.h"
 
+1425604070 source:c:\users\rafael\tareas2\miversion3\enemigo.cpp
+	"Enemigo.h"
+
+1425604070 c:\users\rafael\tareas2\miversion3\enemigo.h
+	"Personaje.h"
+
+1425604070 c:\users\rafael\tareas2\miversion3\personaje.h
+	<SDL.h>
+	<SDL_image.h>
+	<vector>
+	<list>
+	<iostream>
+	<map>
+
+1425604070 source:c:\users\rafael\tareas2\miversion3\enemigoazul.cpp
+	"EnemigoAzul.h"
+
+1425604070 c:\users\rafael\tareas2\miversion3\enemigoazul.h
+	"Enemigo.h"
+
+1425604070 source:c:\users\rafael\tareas2\miversion3\enemigorojo.cpp
+	"EnemigoRojo.h"
+
+1425604070 c:\users\rafael\tareas2\miversion3\enemigorojo.h
+	"Enemigo.h"
+
+1425604070 source:c:\users\rafael\tareas2\miversion3\enemigoverde.cpp
+	"EnemigoVerde.h"
+
+1425604070 c:\users\rafael\tareas2\miversion3\enemigoverde.h
+	"Enemigo.h"
+
+1426268423 source:c:\users\rafael\tareas2\miversion3\main.cpp
+	<stdlib.h>
+	<SDL.h>
+	<SDL_image.h>
+	<iostream>
+	<vector>
+	<list>
+	"EnemigoAzul.h"
+	"EnemigoVerde.h"
+	"EnemigoRojo.h"
+	"Sho.h"
+	<fstream>
+
+1425604070 c:\users\rafael\tareas2\miversion3\sho.h
+	"Personaje.h"
+
+1425604070 source:c:\users\rafael\tareas2\miversion3\personaje.cpp
+	"Personaje.h"
+
+1425604070 source:c:\users\rafael\tareas2\miversion3\sho.cpp
+	"Sho.h"
+

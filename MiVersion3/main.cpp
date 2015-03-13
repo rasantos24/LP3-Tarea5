@@ -15,12 +15,15 @@ using namespace std;
 SDL_Window* window;
 SDL_Renderer* renderer;
 SDL_Event Event;
-SDL_Texture *background;
-SDL_Rect rect_background;
+SDL_Texture *background, *puntos;
+SDL_Rect rect_background, rect_actualizar;
 int opcion=0;
+int Puntaje=0;
+int nuevo=0;
 
 void loopJuego()
 {
+    cout<<"Puntos:"+Puntaje<<endl;
     //Init textures
     int w=0,h=0;
     background = IMG_LoadTexture(renderer,"fondito.png");
@@ -89,6 +92,15 @@ void loopJuego()
 
         SDL_RenderPresent(renderer);
 
+        Puntaje = frame;
+        if(Puntaje>nuevo)
+        {
+            SDL_RenderCopy(renderer, puntos, NULL, &rect_actualizar);
+            ofstream out("Puntos");
+            out<<Puntaje<<endl;
+            out.close();
+        }
+        SDL_RenderPresent(renderer);
         frame++;
     }
 }
@@ -128,24 +140,6 @@ public:
         is_selected = false;
     }
 };
-
-int readFrame(){
-    cout<<"Corriendo"<<endl;
-    ifstream in("Puntaje");
-    in.seekg(0);
-    int puntaje;
-    in.read((char*)&puntaje,4);
-    in.close();
-    return puntaje;
-}
-
-void writeFrame(int frame){
-    cout<<"Actualizando datos: ";
-    ofstream out("Puntaje");
-    out.write((char*)&frame,4);
-    cout<<frame<<endl;
-    out.close();
-}
 
 void Instrucciones1()
 {
@@ -222,12 +216,6 @@ void mainMenu()
                 if(Event.key.keysym.sym == SDLK_DOWN)
                 {
                     opcion++;
-                    if(opcion > 4)
-                        opcion = 4;
-                }
-                if(Event.key.keysym.sym == SDLK_DOWN)
-                {
-                    opcion++;
                     if(opcion > 3)
                         opcion = 3;
                 }
@@ -249,9 +237,6 @@ void mainMenu()
                         break;
                         case 3:
                             exit(0);
-                        break;
-                        case 4:
-                            writeFrame(0);
                         break;
                     }
                 }
@@ -294,6 +279,13 @@ int main( int argc, char* args[] )
         std::cout << SDL_GetError() << std::endl;
         return 30;
     }
+
+    ifstream in("Puntaje");
+    int ta;
+    in>>ta;
+    Puntaje = ta;
+    cout<<Puntaje<<endl;
+    in.close();
 
     mainMenu();
 
