@@ -17,13 +17,11 @@ SDL_Renderer* renderer;
 SDL_Event Event;
 SDL_Texture *background, *puntos;
 SDL_Rect rect_background, rect_actualizar;
-int opcion=0;
-int Puntaje=0;
-int nuevo=0;
+int opcion=0, Puntaje=0, marca=0, nm;
 
 void loopJuego()
 {
-    cout<<"Puntos:"+Puntaje<<endl;
+    cout<<"Puntos: "+Puntaje<<endl;
     //Init textures
     int w=0,h=0;
     background = IMG_LoadTexture(renderer,"fondito.png");
@@ -93,10 +91,10 @@ void loopJuego()
         SDL_RenderPresent(renderer);
 
         Puntaje = frame;
-        if(Puntaje>nuevo)
+        if(Puntaje > marca)
         {
             SDL_RenderCopy(renderer, puntos, NULL, &rect_actualizar);
-            ofstream out("Puntos");
+            ofstream out("Puntos.txt");
             out<<Puntaje<<endl;
             out.close();
         }
@@ -211,6 +209,7 @@ void mainMenu()
                 }
                 if(Event.key.keysym.sym == SDLK_ESCAPE)
                 {
+                    Puntaje=0;
                     return;
                 }
                 if(Event.key.keysym.sym == SDLK_DOWN)
@@ -280,11 +279,11 @@ int main( int argc, char* args[] )
         return 30;
     }
 
-    ifstream in("Puntaje");
-    int ta;
-    in>>ta;
-    Puntaje = ta;
-    cout<<Puntaje<<endl;
+    ifstream in("Puntos.txt");
+    int nm;
+    in>>nm;
+    marca = nm;
+    cout<<marca<<endl;
     in.close();
 
     mainMenu();
